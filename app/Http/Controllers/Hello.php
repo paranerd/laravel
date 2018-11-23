@@ -12,8 +12,7 @@ class Hello extends Controller
     }
 
     public function index($name = 'test') {
-        return "myflash: " . session('myflash', 'thedefault');
-		//return "Name: " . $name . " | Session: " . session('test', 'default');
+        return "name: " . $name . " | myflash: " . session('myflash', 'thedefault');
 	}
 
 	public function random($length = 2) {
@@ -25,5 +24,14 @@ class Hello extends Controller
         $request->session()->flash('myflash', $message);
         //session()->put('myflash', $message);
         return redirect('/hello/random');
+    }
+
+    public function component() {
+      $parts = [
+        ['name' => 'part1', 'id' => 1],
+        ['name' => 'part2', 'id' => 2],
+        ['name' => 'part3', 'id' => 3]
+      ];
+      return view('/hello/component', ['parts' => $parts]);
     }
 }

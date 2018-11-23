@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Parts
+Route::get('/parts', 'PartsController@index');
+Route::get('/parts/create/{id}', 'PartsController@create')->name("parts.create");
+
 Route::get('/hello/random/{length?}', ['uses' => 'Hello@random']);
 Route::get('/hello/flash/{message}', ['uses' => 'Hello@flash']);
+Route::get('/hello/component', 'Hello@component');
+Route::get('/hello/download', 'Hello@download')->name('hello.download');
 
 Route::get('/hello/{name?}', ['uses' => 'Hello@index']);
 Route::get('/second', ['uses' => 'Second']);
