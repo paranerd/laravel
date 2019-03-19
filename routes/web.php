@@ -24,6 +24,17 @@ Route::get('/hello/flash/{message}', ['uses' => 'Hello@flash']);
 Route::get('/hello/component', 'Hello@component');
 Route::get('/hello/download', 'Hello@download')->name('hello.download');
 
+Route::get('crypto', ['uses' => 'Crypto@index']);
+Route::get('crypto/random', ['uses' => 'Crypto@random']);
+
+Route::get('/hello/partial/one', function() {
+	return view('one');
+});
+
+Route::get('/hello/partial/two', function() {
+	return view('partials/two');
+});
+
 Route::get('/hello/{name?}', ['uses' => 'Hello@index']);
 Route::get('/second', ['uses' => 'Second']);
 Route::get('/second/view', function () {
